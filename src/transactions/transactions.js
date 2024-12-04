@@ -1,26 +1,26 @@
 function username() {
-    if (!localStorage.getItem("username")) {
-        localStorage.setItem("username", "User")
+    if (!localStorage.getItem('username')) {
+        localStorage.setItem('username', 'User')
     }
-    return localStorage.getItem("username")
+    return localStorage.getItem('username')
 }
 
 function setTransactions(transactions) {
-    localStorage.setItem("transactions", JSON.stringify(transactions))
+    localStorage.setItem('transactions', JSON.stringify(transactions))
 }
 function getTransactions() {
-    if (!localStorage.getItem("transactions")) {
+    if (!localStorage.getItem('transactions')) {
         setTransactions([])
     }
-    return JSON.parse(localStorage.getItem("transactions"))
+    return JSON.parse(localStorage.getItem('transactions'))
 }
 
 function handleForm(ev) {
     ev.preventDefault()
     const data = new FormData(ev.target)
-    const date = data.get("date")
-    const amount = data.get("amount")
-    const desc = data.get("desc")
+    const date = data.get('date')
+    const amount = data.get('amount')
+    const desc = data.get('desc')
 
     if (!(desc && date && amount)) {
         return;
@@ -38,10 +38,10 @@ function loadTransactions(transactions) {
     table.innerHTML = `
         <thead>
             <tr>
-                <th class="text-lg text-left text-dracula-purple">Date</th>
-                <th class="text-lg text-left text-dracula-purple">Amount</th>
-                <th class="text-lg text-left text-dracula-purple">Description</th>
-                <th class="text-lg text-left text-dracula-purple"></th>
+                <th class='text-lg text-left text-dracula-purple'>Date</th>
+                <th class='text-lg text-left text-dracula-purple'>Amount</th>
+                <th class='text-lg text-left text-dracula-purple'>Description</th>
+                <th class='text-lg text-left text-dracula-purple'></th>
             </tr>
         </thead>
         <tbody>
@@ -51,7 +51,7 @@ function loadTransactions(transactions) {
 
     transactions.map(x => {
         const tr = document.createElement('tr')
-        tr.classList.add("even:bg-gray-500", "odd:bg-white")
+        tr.classList.add('even:bg-gray-500', 'odd:bg-white')
         tr.innerHTML = `
             <td>${x.date}</td>
             <td>${x.amount}</td>
@@ -80,16 +80,20 @@ function update() {
     const balance = document.getElementById('balance')
     balance.innerHTML = `
     Balance: 
-        <p class="text-dracula-foreground">${calcBalance()}</p>
+        <p class='text-dracula-foreground'>${calcBalance()}</p>
     `
 }
 
+function handleSearchForm(ev) {
+    ev.preventDefault()
+    const data = new FormData(ev.target)
+    const needed = data.get('input')
+    loadTransactions(getTransactions().filter(x => x.desc.includes(needed)))
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    const welcome = document.getElementById('welcome')
-    welcome.textContent = `Welcome, ${username()}!`
-
-    const form = document.getElementById('addForm')
-    form.addEventListener('submit', handleForm)
-
+    document.getElementById('welcome').textContent = `Welcome, ${username()}!`
+    document.getElementById('addForm').addEventListener('submit', handleForm)
+    document.getElementById('searchForm').addEventListener('submit', handleSearchForm)
     update()
 })
