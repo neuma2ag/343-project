@@ -49,7 +49,9 @@ function loadTransactions(transactions) {
         `
     const tbody = document.querySelector('tbody')
 
-    transactions.map(x => {
+    const start = getPage() * 22
+    const ts = transactions.slice(start, start + 22)
+    ts.map(x => {
         const tr = document.createElement('tr')
         tr.classList.add('even:bg-gray-500', 'odd:bg-white')
         tr.innerHTML = `
@@ -82,6 +84,7 @@ function update() {
     Balance: 
         <p class='text-dracula-foreground'>${calcBalance()}</p>
     `
+    document.getElementById('page').textContent = getPage()
 }
 
 function handleSearchForm(ev) {
@@ -91,9 +94,48 @@ function handleSearchForm(ev) {
     loadTransactions(getTransactions().filter(x => x.desc.includes(needed)))
 }
 
+function getPage() {
+    if (!localStorage.getItem('page')) {
+        setPage(0)
+    }
+    return JSON.parse(localStorage.getItem('page'))
+}
+
+function setPage(page) {
+    localStorage.setItem('page', JSON.stringify(page))
+}
+
+function getLastPage() {
+    return Math.floor(getTransactions().length / 22)
+}
+
+function nextPage(_) {
+    setPage(Math.min(getPage() + 1, getLastPage()))
+    update()
+}
+
+function prevPage(_) {
+    setPage(Math.max(getPage() - 1, 0))
+    update()
+}
+
+function lastPage(_) {
+    setPage(getLastPage())
+    update()
+}
+
+function firstPage(_) {
+    setPage(0)
+    update()
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('welcome').textContent = `Welcome, ${username()}!`
     document.getElementById('addForm').addEventListener('submit', handleForm)
     document.getElementById('searchForm').addEventListener('submit', handleSearchForm)
+    document.getElementById('nextPage').addEventListener('click', nextPage)
+    document.getElementById('prevPage').addEventListener('click', prevPage)
+    document.getElementById('firstPage').addEventListener('click', firstPage)
+    document.getElementById('lastPage').addEventListener('click', lastPage)
     update()
 })

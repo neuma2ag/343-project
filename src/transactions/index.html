@@ -36,7 +36,18 @@
             </form>
             <table id="transactions" class="w-full mt-5">
             </table>
-            <span id="balance" class="text-lg text-dracula-purple flex gap-1">Balance</span>
+            <div class="flex">
+                <span id="balance" class="text-lg text-dracula-purple flex gap-1">Balance</span>
+                <div class="flex w-full gap-1">
+                    <div class="flex-grow">
+                    </div>
+                    <button id='firstPage' class="text-dracula-purple"><<</button>
+                    <button id="prevPage" class="text-dracula-purple"><</button>
+                    <p id="page" class="text-dracula-purple text-lg">1</p>
+                    <button id='nextPage' class="text-dracula-purple">></button>
+                    <button id='lastPage' class="text-dracula-purple">>></button>
+                </div>
+            </div>
         </div>
 </body>
 
