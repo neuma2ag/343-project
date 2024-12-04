@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fun Financial Planner</title>
+    <link rel="stylesheet" href="../../assets/tailwind.css">
+    <script src="https://kit.fontawesome.com/343602021e.js" crossorigin="anonymous"></script>
+    <script src="../components.js"></script>
+    <script src="./transactions.js"></script>
+</head>
+
+<body class="bg-dracula-background h-screen">
+    <div class="w-[1300px] mx-auto mt-10">
+        <div class="flex items-center">
+            <span id="welcome" class="text-xl text-dracula-purple"></span>
+        </div>
+        <div>
+            <form id="addForm" class="mt-5 flex gap-2">
+                <input class="bg-dracula-current text-dracula-foreground" type="date" name="date">
+                <input class="bg-dracula-current text-dracula-foreground" type="number" , step="0.01"
+                    placeholder="Amount" name="amount">
+                <input class="bg-dracula-current text-dracula-foreground w-full" type="text" placeholder="Description"
+                    name="desc">
+                <button
+                    class="bg-dracula-current p-1 text-dracula-purple border-solid border-dracula-purple border-2 rounded-sm">Add</button>
+            </form>
+            <table id="transactions" class="w-full mt-5">
+            </table>
+            <span id="balance" class="text-lg text-dracula-purple flex gap-1">Balance</span>
+        </div>
+</body>
+
+</html>
