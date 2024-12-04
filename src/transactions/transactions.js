@@ -71,6 +71,22 @@ function loadTransactions(transactions) {
 
         return tr;
     }).forEach(x => tbody.appendChild(x))
+
+    let length = ts.length
+    while (length < 22) {
+        console.log(length)
+        const tr = document.createElement('tr')
+        tr.classList.add('even:bg-gray-500', 'odd:bg-white')
+        tr.innerHTML = `
+            <td>_</td>
+            <td></td>
+            <td></td>
+            <td></td>`
+
+        tbody.appendChild(tr)
+        length += 1
+
+    }
 }
 
 function calcBalance() {
@@ -81,9 +97,9 @@ function update() {
     loadTransactions(getTransactions())
     const balance = document.getElementById('balance')
     balance.innerHTML = `
-    Balance: 
+        Balance:
         <p class='text-dracula-foreground'>${calcBalance()}</p>
-    `
+        `
     document.getElementById('page').textContent = getPage()
 }
 
@@ -130,7 +146,7 @@ function firstPage(_) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('welcome').textContent = `Welcome, ${username()}!`
+    document.getElementById('welcome').textContent = `Welcome, ${ username() } !`
     document.getElementById('addForm').addEventListener('submit', handleForm)
     document.getElementById('searchForm').addEventListener('submit', handleSearchForm)
     document.getElementById('nextPage').addEventListener('click', nextPage)
