@@ -24,7 +24,7 @@ function nav() {
 function navItem(page, icon) {
     const li = document.createElement('li')
     li.innerHTML = `
-        <a class="text-dracula-foreground flex gap-1 items-center" href="../${page.toLowerCase()}/index.html">
+        <a class="text-dracula-foreground flex gap-1 items-center hover:text-dracula-purple" href="../${page.toLowerCase()}/index.html">
             <i class="fa-solid ${icon}"></i>
             <h2>${page}</h2>
         </a>
@@ -34,5 +34,5 @@ function navItem(page, icon) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const body = document.querySelector('body')
-    body.appendChild(nav())
+    body.insertBefore(nav(), body.firstChild)
 })
