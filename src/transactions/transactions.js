@@ -53,10 +53,11 @@ function loadTransactions(transactions) {
     const ts = transactions.slice(start, start + 22)
     ts.map(x => {
         const tr = document.createElement('tr')
+        const amountColor = x.amount < 0 ? "text-red-500" : 'text-green-500'
         tr.classList.add('even:bg-gray-500', 'odd:bg-white')
         tr.innerHTML = `
             <td>${x.date}</td>
-            <td>${x.amount}</td>
+            <td class="${amountColor}">${x.amount}</td>
             <td>${x.desc}</td>
             <td></td>`
 
@@ -108,6 +109,7 @@ function handleSearchForm(ev) {
     const data = new FormData(ev.target)
     const needed = data.get('input')
     loadTransactions(getTransactions().filter(x => x.desc.includes(needed)))
+    setPage(0)
 }
 
 function getPage() {
