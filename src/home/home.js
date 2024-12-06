@@ -3,7 +3,7 @@ function card(page, img, desc) {
     div.innerHTML = `
             <div class="w-64 bg-dracula-current p-4 border-solid border-4 border-dracula-background hover:border-dracula-purple hover:cursor-pointer">
                 <div class="flex justify-center">
-                    <img class="h-52" src="../../assets/${img}" />
+                    <img class="h-32 sm:h-52" src="../../assets/${img}" />
                 </div>
                 <span class="text-lg">${desc}<span>
             </div>
