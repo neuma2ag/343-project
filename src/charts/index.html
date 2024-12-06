@@ -14,6 +14,16 @@
 
 <body class="bg-dracula-background h-screen">
     <div class="w-[1300px] mx-auto mt-10">
+        <form id="searchForm">
+            <div>
+                <input class="bg-dracula-current text-dracula-foreground" type="text" name="input" placeholder="Search">
+                <button
+                    class="bg-dracula-current px-1 text-dracula-purple border-solid border-dracula-purple border-2 rounded-sm">Submit</button>
+            </div>
+            <span>Search for a company and view their latest revenue reports</span>
+        </form>
+        <div id="reports" class="mt-10 flex flex-col gap-5 pb-10">
+        </div>
     </div>
 </body>
 

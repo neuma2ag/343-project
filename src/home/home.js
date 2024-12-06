@@ -19,6 +19,6 @@ function card(page, img, desc) {
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.getElementById('cards')
     cards.appendChild(card('transactions', 'dollar.png', 'View and edit all of your financial transactions in a table list format'))
-    cards.appendChild(card('charts', 'charts.png', 'Chart your financial data in multiple dimensions over different time periods'))
+    cards.appendChild(card('charts', 'charts.png', 'Search for a ticker and view the last few years of revenue reports'))
     cards.appendChild(card('account', 'user.png', 'View and edit your account information and completely reset your data'))
 })

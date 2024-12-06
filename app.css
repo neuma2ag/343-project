@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-    span {
+    span, p {
         @apply text-dracula-foreground;
     }
 }
