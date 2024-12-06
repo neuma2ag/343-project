@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fun Financial Planner</title>
+    <link rel="stylesheet" href="../../assets/tailwind.css">
+    <script src="https://kit.fontawesome.com/343602021e.js" crossorigin="anonymous"></script>
+    <script src="../components.js"></script>
+    <script src="./account.js"></script>
+</head>
+
+<body class="bg-dracula-background h-screen">
+    <div class="w-[1300px] mx-auto mt-10">
+        <div class="flex flex-col gap-10">
+        <span id="welcome" class="text-xl text-dracula-purple"></span>
+        <form id="changeName">
+            <input class="bg-dracula-current text-dracula-foreground" type="text" name="name" placeholder="Change name">
+            <button
+                class="bg-dracula-current px-1 text-dracula-purple border-solid border-dracula-purple border-2 rounded-sm">Submit</button>
+        </form>
+        <button id="export"
+            class="bg-dracula-current px-1 text-dracula-purple border-solid border-dracula-purple border-2 rounded-sm w-fit">Export
+            Data as JSON</button>
+        <button id="clear"
+            class="bg-dracula-current px-1 text-dracula-purple border-solid border-dracula-purple border-2 rounded-sm w-fit">Clear
+            All Data</button>
+
+        <a href="https://en.wikipedia.org/wiki/Finance" target="_blank">Want to learn more about finance in general? Click here.</a>
+        </div>
+    </div>
+</body>
+
+</html>
